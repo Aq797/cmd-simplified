@@ -39,7 +39,13 @@ def open_file(name):
         print(i)
 
 def edit_file(name):
-    os.system("notepad "+name)
+    if(os.name=='posix'):
+        try:
+            os.system("nano "+name)
+        except:
+            os.system("vi "+name)
+    else:        
+        os.system("notepad "+name)
 
 # def create_multiple_files(initial,increment):
 #     temp = initial.split("-")
